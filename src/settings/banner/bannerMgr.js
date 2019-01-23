@@ -1,9 +1,35 @@
 var bannersDA = require('./bannerDA');
+const multer = require('multer');
+var fs = require('fs');
+var mkdirp = require('mkdirp');
+var appSetting = require('../../config/appSetting');
 
 
 exports.createBanners = function (req, res) {
     try {
-        bannersDA.createBanners(req, res);
+        const PATH = appSetting.bannerUploadPath;
+        let storage = multer.diskStorage({
+            destination: (req, file, cb) => {
+                cb(null, PATH);
+                bannersDA.createBanners(req,file,res);
+            },
+            filename: (req, file, cb) => {
+                cb(null, file.originalname);
+            }
+        });
+
+        let upload = multer({
+            storage: storage
+        }).array('uploads[]', 20); //only 20 images can be uploaded
+        upload(req, res, function (err) {
+            if (err) {
+                console.log(err);
+                return res.status(501).json({
+                    error: err
+                });
+            }
+        });
+
     } catch (error) {
         console.log(error);
     }

@@ -17,11 +17,11 @@ module.exports = function(app) {
 
     // banners
 
-    app.route('/banners')
-    .post(bannersMgr.createBanners);
+    app.route('/banners/:position')
+    .put(bannersMgr.createBanners);
 
     app.route('/deletebanners/:id')
-    .get(bannersMgr.deleteBanners);
+    .delete(bannersMgr.deleteBanners);
 
     app.route('/banners')
     .get(bannersMgr.getBanners);

@@ -15,7 +15,7 @@ exports.createProduct = function (req, res) {
          productData.color = req.body.color,
          productData.styleCode = req.body.styleCode,
          productData.skuCode = req.body.skuCode, */
-    productData.mainCategory.push(req.body.mainCategory),
+    productData.mainCategory = req.body.mainCategory
         productData.save(
             function (err, productDetails) {
                 if (err) { // if it contains error return 0

@@ -6,11 +6,11 @@ var promotionsMgr = require('./promotions/promotionsMgr');
 module.exports = function(app) {
 
     // ads 
-    app.route('/ads')
-    .post(adsMgr.createAds);
+    app.route('/ads/:position')
+    .put(adsMgr.createAds);
 
     app.route('/deleteads/:id')
-    .get(adsMgr.deleteAds);
+    .delete(adsMgr.deleteAds);
 
     app.route('/ads')
     .get(adsMgr.getAds);

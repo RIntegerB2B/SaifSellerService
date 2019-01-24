@@ -31,7 +31,7 @@ module.exports = function(app) {
     .post(promotionsMgr.createPromotions);
 
     app.route('/deletepromotions/:id')
-    .get(promotionsMgr.deletePromotions);
+    .delete(promotionsMgr.deletePromotions);
 
     app.route('/promotions')
     .get(promotionsMgr.getPromotions);

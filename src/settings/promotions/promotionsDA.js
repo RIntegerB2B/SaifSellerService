@@ -2,7 +2,9 @@ var Promotions = require('../../model/promotions.model');
 
 
 exports.createPromotions = function (req, res) {
-    var promotions = new Promotions(req.body);
+    var promotions = new Promotions();
+    promotions.promotionTitle = req.body.promotionTitle;
+    promotions.position = req.body.position;
     promotions.save(function (err, promotions) {
       if (err) {
         res.status(500).send({
@@ -22,7 +24,9 @@ exports.deletePromotions = function (req, res) {
                 "result": 0
             });
         } else {
-            Promotions.find({}).select().exec(function (err, promotions) {
+            Promotions.find({}).select().sort({
+                position: 1
+            }).exec(function (err, promotions) {
                 if (err) {
                     res.status(500).send({
                         message: "Some error occurred while retrieving notes."
@@ -37,13 +41,13 @@ exports.deletePromotions = function (req, res) {
 exports.getPromotions = function (req, res) {
     Promotions.find({}).select().sort({
         position: 1
-    }).exec(function (err, promotionImages) {
+    }).exec(function (err, promotions) {
         if (err) {
             res.status(500).send({
                 message: "Some error occurred while retrieving notes."
             });
         } else {
-            res.status(200).json(promotionImages);
+            res.status(200).json(promotions);
         }
     });
 }

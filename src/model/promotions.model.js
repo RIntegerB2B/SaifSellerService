@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 
 const PromotionSchema = new mongoose.Schema({
-    position: String,
+    position: Number,
     productsID: [String],
-    description: String
+    promotionTitle: String
 
 
 });

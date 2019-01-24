@@ -1,8 +1,13 @@
 var promotionsDA = require('./promotionsDA');
+const multer = require('multer');
+var fs = require('fs');
+var mkdirp = require('mkdirp');
+var appSetting = require('../../config/appSetting');
 
 exports.createPromotions = function (req, res) {
     try {
         promotionsDA.createPromotions(req, res);
+
     } catch (error) {
         console.log(error);
     }

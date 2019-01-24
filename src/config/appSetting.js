@@ -4,5 +4,5 @@ module.exports = {
     bannerUploadPath: './images/banners',
     bannerServerPath: 'http://localhost/SaifB2B/banners/',
     adsUploadPath: './images/ads',
-    adsServerPath: 'http://localhost/SaifB2B/ads/'
+    adsServerPath: 'http://localhost/SaifB2B/ads/',
 };

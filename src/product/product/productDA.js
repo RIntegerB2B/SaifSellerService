@@ -16,16 +16,16 @@ exports.createProduct = function (req, res) {
          productData.styleCode = req.body.styleCode,
          productData.skuCode = req.body.skuCode, */
     productData.mainCategory = req.body.mainCategory
-        productData.save(
-            function (err, productDetails) {
-                if (err) { // if it contains error return 0
-                    res.status(500).send({
-                        "result": 0
-                    });
-                } else {
-                    res.status(200).json(productDetails);
-                }
-            });
+    productData.save(
+        function (err, productDetails) {
+            if (err) { // if it contains error return 0
+                res.status(500).send({
+                    "result": 0
+                });
+            } else {
+                res.status(200).json(productDetails);
+            }
+        });
 
 }
 
@@ -80,10 +80,14 @@ exports.updateProduct = function (req, res) {
                 "result": 0
             });
         } else {
+            product.productTitle = req.body.productTitle;
             product.productName = req.body.productName;
-            product.price = req.body.price;
-            product.shortDescription = req.body.sizeDescription;
             product.productDescription = req.body.productDescription;
+            product.shortDescription = req.body.shortDescription;
+            product.price = req.body.price;
+            product.color = req.body.color;
+            product.styleCode = req.body.styleCode;
+            product.skuCode = req.body.skuCode;
             product.productImageName = req.body.productImageName;
             product.save(function (err, updatedProduct) {
                 if (err) {

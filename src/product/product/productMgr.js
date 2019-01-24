@@ -51,7 +51,7 @@ exports.createProductImage = function (req, res) {
 
 exports.updateProduct = function (req, res) {
     try {
-        const DIR = './uploads';
+       /*  const DIR = './uploads';
         let storage = multer.diskStorage({
             destination: (req, file, cb) => {
                 cb(null, DIR);
@@ -62,7 +62,7 @@ exports.updateProduct = function (req, res) {
         });
         let upload = multer({
             storage: storage
-        });
+        }); */
         productDA.updateProduct(req, res);
     } catch (error) {
         console.log(error);

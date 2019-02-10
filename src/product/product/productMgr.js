@@ -34,14 +34,15 @@ exports.createProductImage = function (req, res) {
         let upload = multer({
             storage: storage
         }).array('uploads[]', 20); //only 20 images can be uploaded
-        upload(req, res, function (err) {
+        upload(req, res, function (err, result) {
             if (err) {
-                console.log(err);
                 return res.status(501).json({
                     error: err
                 });
+            }   else {
+                res.status(200).json(result);
             }
-        });
+        }); 
 
     } catch (error) {
         console.log(error);

@@ -4,13 +4,20 @@ const ProductSchema  = new mongoose.Schema({
     productTitle: String,
     productName: String,
     productDescription: String,
-    shortDescription: String, 
+    overview: String,
     price: Number,
     color: String, 
+    productImageName: [String],
+    subCategory: String,
+    // details
     styleCode: String, 
     skuCode: String, 
-    productImageName: [String],
-    mainCategory: [String]
+    material: String,
+    brand: String,
+    dimensions: String,
+    weight: String,
+    assembly: String,
+    packageDetails: String,
 });
 
 

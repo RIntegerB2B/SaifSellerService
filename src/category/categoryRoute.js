@@ -1,6 +1,7 @@
 'use strict';
 var superCategoryMgr = require('./superCategory/superCategoryMgr');
 var mainCategoryMgr = require('./mainCategory/mainCategoryMgr');
+var subCategoryMgr = require('./subCategory/subCategoryMgr');
 
 module.exports = function (app) {
     // super category
@@ -35,5 +36,18 @@ module.exports = function (app) {
         app.route('/showMainCategory')
         .get(mainCategoryMgr.getAllMainCategory)
 
+// sub category
+app.route('/subCategory/:superid/add/:mainid')
+        .put(subCategoryMgr.subCategoryInsert);
 
+
+    app.route('/category/:categoryId/mainCategory/:mainCategoryId/subCategory/:subCategoryId')
+        .delete(subCategoryMgr.subCategoryDelete);
+
+    app.route('/category/:categoryId/mainCategory/:mainCategoryId/subCategory/:subCategoryId')
+        .put(subCategoryMgr.subCategoryUpdate);
+
+
+    app.route('/category/:categoryId/mainCategory/:mainCategoryId')
+        .get(subCategoryMgr.findSubCategory);
 }

@@ -1,3 +1,4 @@
+'use strict';
 var moqMgr = require('./moqMgr');
 module.exports = function (app) {
     app.route('/createMoq')

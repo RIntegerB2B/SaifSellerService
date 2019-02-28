@@ -14,8 +14,11 @@ module.exports = function (app) {
     app.route('/category/:id')
         .put(superCategoryMgr.superCategoryEdit);
 
-    app.route('/categoryDelete/:categoryId')
+    app.route('/categoryDelete/:categoryId/name/:name')
         .delete(superCategoryMgr.superCategoryDelete);
+
+    app.route('/supercategoryimage/:id')
+        .put(superCategoryMgr.createSuperCategoryImage);
 
     // main category
     app.route('/superCategory')
@@ -23,21 +26,23 @@ module.exports = function (app) {
 
     app.route('/mainCategory')
         .post(mainCategoryMgr.mainCategoryInsert);
-
-     app.route('/category/:categoryId/mainCategory/:mainCategoryId')
-        .put(mainCategoryMgr.mainCategoryUpdate);
+    app.route('/supercategory/:supId/maincategoryname/:name/maincategoryid/:mainId')
+        .put(mainCategoryMgr.createMainCategoryImage);
 
     app.route('/category/:categoryId/mainCategory/:mainCategoryId')
+        .put(mainCategoryMgr.mainCategoryUpdate);
+
+    app.route('/category/:categoryId/mainCategory/:mainCategoryId/name/:name')
         .delete(mainCategoryMgr.mainCategoryDelete);
 
     app.route('/superCategorydetail/:id')
         .get(mainCategoryMgr.getMainCategory);
 
-        app.route('/showMainCategory')
+    app.route('/showMainCategory')
         .get(mainCategoryMgr.getAllMainCategory)
 
-// sub category
-app.route('/subCategory/:superid/add/:mainid')
+    // sub category
+    app.route('/subCategory/:superid/add/:mainid')
         .put(subCategoryMgr.subCategoryInsert);
 
 

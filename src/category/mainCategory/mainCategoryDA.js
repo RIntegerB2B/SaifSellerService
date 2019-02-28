@@ -1,5 +1,7 @@
 'use strict';
 var SuperCategory = require('../../model/superCategory.model');
+var appSetting = require('../../config/configure');
+var rmdir = require('rmdir');
 
 exports.mainCategoryInsert = function (req, res) {
   let mainCat = {
@@ -26,7 +28,7 @@ exports.mainCategoryInsert = function (req, res) {
               "result": 0
             });
           } else {
-           /*  console.log(superCat.mainCategory); */
+            res.status(200).json(superCat.mainCategory);
           }
         });
       }
@@ -34,7 +36,36 @@ exports.mainCategoryInsert = function (req, res) {
   )
 }
 
+exports.createMainCategoryImage = function (req, file, res) {
+  SuperCategory.findOne({
+    '_id': req.params.supId,
+  }, function (err, categoryDetail) {
+    if (err) {
+      console.log(err);
 
+    } else {
+      var mainCat = categoryDetail.mainCategory.id(req.params.mainId);
+      mainCat.mainCategoryImageName = file.originalname
+      categoryDetail.save(function (err) {
+        if (err) {
+          res.status(201).send({
+            "result": 0
+          });
+        } else {
+          SuperCategory.findById(req.params.supId).select('mainCategory').exec(function (err, createdCatalog) {
+            if (err) {
+              res.status(500).json({
+                "result": 0
+              })
+            } else {
+              /*  res.status(200).json(createdCatalog) */
+            }
+          })
+        }
+      });
+    }
+  });
+}
 
 exports.mainCategoryDelete = function (req, res) {
   SuperCategory.findById(req.params.categoryId, function (err, category) {
@@ -51,15 +82,24 @@ exports.mainCategoryDelete = function (req, res) {
             "result": 0
           });
         } else {
-          SuperCategory.findById(req.params.categoryId).select('mainCategory').exec(function (err, createdCatalog) {
+          const PATH = appSetting.categoryUploadPath + '/' + req.params.name;
+          rmdir(PATH, function (err, paths) {
             if (err) {
-              res.status(500).json({
-                "result": 0
-              })
+              res.status(500).send({
+                err
+              });
             } else {
-              res.status(200).json(createdCatalog.mainCategory)
+              SuperCategory.findById(req.params.categoryId).select('mainCategory').exec(function (err, createdCatalog) {
+                if (err) {
+                  res.status(500).json({
+                    "result": 0
+                  })
+                } else {
+                  res.status(200).json(createdCatalog.mainCategory)
+                }
+              })
             }
-          })
+          });
         }
       });
 
@@ -92,7 +132,9 @@ exports.mainCategoryUpdate = function (req, res) {
                 "result": 0
               })
             } else {
-              res.status(200).json(createdCatalog)
+
+
+              res.status(200).json(createdCatalog);
             }
           })
         }
@@ -110,7 +152,12 @@ exports.getMainCategory = function (req, res) {
         "result": 0
       });
     } else {
+      var categoryLength = category.mainCategory.length - 1;
+      for (var i = 0; i <= categoryLength; i++) {
+        category.mainCategory[i].mainCategoryImageName = appSetting.categoryServerPath + category.mainCategory[i].mainCategoryName + '/' + category.mainCategory[i].mainCategoryImageName;
+      }
       res.status(200).json(category);
+      console.log(category);
     }
   });
 }

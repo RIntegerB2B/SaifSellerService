@@ -1,6 +1,6 @@
 'use strict';
 var Product = require('../../model/product.model');
-var appSetting = require('../../config/appSetting');
+var appSetting = require('../../config/configure');
 var fs = require('fs');
 var rmdir = require('rmdir');
 var mkdirp = require('mkdirp');

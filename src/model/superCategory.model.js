@@ -5,6 +5,7 @@ const SuperCategorySchema = new mongoose.Schema({
     
     categoryName: String,
     categoryDescription: String,
+    categoryImageName: String,
     mainCategory:[MainCategory]
 });
 

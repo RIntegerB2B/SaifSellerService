@@ -3,7 +3,7 @@ var productDA = require('./productDA');
 const multer = require('multer');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
-var appSetting = require('../../config/appSetting');
+var appSetting = require('../../config/configure');
 
 exports.createProduct = function (req, res) {
     try {

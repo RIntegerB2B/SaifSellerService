@@ -4,7 +4,7 @@
 /src/dist
 
 # Uploaded  images
-/uploads
+/images
 
 # dependencies
 /node_modules

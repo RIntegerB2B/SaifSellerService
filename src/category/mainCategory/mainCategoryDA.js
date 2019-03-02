@@ -157,7 +157,6 @@ exports.getMainCategory = function (req, res) {
         category.mainCategory[i].mainCategoryImageName = appSetting.categoryServerPath + category.mainCategory[i].mainCategoryName + '/' + category.mainCategory[i].mainCategoryImageName;
       }
       res.status(200).json(category);
-      console.log(category);
     }
   });
 }

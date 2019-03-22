@@ -5,8 +5,9 @@ var fs = require('fs');
 var rmdir = require('rmdir');
 var mkdirp = require('mkdirp');
 
-exports.createProduct = function (req, res) {
+exports.createProduct = function (req, res, productID) {
     var productData = new Product(req.body);
+    productData.productId = productID;
     productData.save(
         function (err, productDetails) {
             if (err) { // if it contains error return 0

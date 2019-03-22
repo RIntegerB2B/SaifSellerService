@@ -2,6 +2,7 @@
 var adsMgr  = require('./ads/adsMgr');
 var bannersMgr = require('./banner/bannerMgr');
 var promotionsMgr = require('./promotions/promotionsMgr');
+var footerMgr = require('./footer/footerMgr');
 
 module.exports = function(app) {
 
@@ -38,5 +39,20 @@ module.exports = function(app) {
 
     app.route('/editpromotions/:id')
     .put(promotionsMgr.editPromotions);
+
+    // footer
+
+    app.route('/footer')
+    .post(footerMgr.createFooter);
+
+    app.route('/createLogoImage/:id')
+    .put(footerMgr.createLogoImage);
+
+
+    app.route('/footerDetails')
+    .get(footerMgr.getFooterDetails);
+
+    app.route('/details/:id')
+    .put(footerMgr.updateFooterDetails);
 
 }

@@ -65,7 +65,7 @@ exports.createSuperCategoryImage = function (req, res) {
                     error: err
                 });
             }   else {
-                res.status(200).json(result);
+               /*  res.status(200).json(result); */
             }
         }); 
             }

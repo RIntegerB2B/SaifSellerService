@@ -135,14 +135,22 @@ exports.updateFooterDetails = function (req, res) {
                 footerData[0].alternativeContactNo = req.body.alternativeContactNo;
                 footerData[0].mailId = req.body.mailId;
                 footerData[0].logoImageName = req.body.logoImageName;
+<<<<<<< HEAD
                 footerData[0].save( function (err, footerDa) {
                 if (err) {
                     console.log(err);
+=======
+                footerData[0].save({}, function (err, footerData) {
+                if (err) {
+>>>>>>> db9b3bdbabd07e392f8fe13589009c3366969db4
                     res.status(500).send({
                         message: 1
                     });
                 } else {
+<<<<<<< HEAD
                     console.log(footerDa);
+=======
+>>>>>>> db9b3bdbabd07e392f8fe13589009c3366969db4
                     Footer.find({}).select().exec(function (err, footerData) {
                         if (err) {
                             res.status(500).send({

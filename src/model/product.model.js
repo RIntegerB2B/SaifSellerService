@@ -10,8 +10,11 @@ const ProductSchema  = new mongoose.Schema({
     color: String, 
     productImageName: [String],
     subCategory: String,
+<<<<<<< HEAD
     superCategory: String,
     mainCategory: String,
+=======
+>>>>>>> db9b3bdbabd07e392f8fe13589009c3366969db4
     // details
     styleCode: String, 
     skuCode: String, 

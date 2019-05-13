@@ -3,14 +3,11 @@ var adsMgr  = require('./ads/adsMgr');
 var bannersMgr = require('./banner/bannerMgr');
 var promotionsMgr = require('./promotions/promotionsMgr');
 var footerMgr = require('./footer/footerMgr');
-<<<<<<< HEAD
 var supportMgr = require('./support/supportMgr');
 var contactUsMgr = require('./contact-us/contactUsMgr');
 var privacyPolicyMgr = require('./privacy-policy/privacyPolicyMgr');
 var faqMgr = require('./faqs/faqMgr');
 var termsAndUseMgr = require('./terms-use/termsAndUseMgr');
-=======
->>>>>>> db9b3bdbabd07e392f8fe13589009c3366969db4
 
 module.exports = function(app) {
 
@@ -63,7 +60,6 @@ module.exports = function(app) {
     app.route('/details/:id')
     .put(footerMgr.updateFooterDetails);
 
-<<<<<<< HEAD
     // support
 
  app.route('/support')
@@ -132,6 +128,4 @@ module.exports = function(app) {
     .put(termsAndUseMgr.updateTerms);
 
      
-=======
->>>>>>> db9b3bdbabd07e392f8fe13589009c3366969db4
 }

@@ -1,5 +1,5 @@
 module.exports = {
-   /*  productUploadPath: './images/products',
+  /*   productUploadPath: './images/products',
     productServerPath: 'http://localhost/SaifB2B/products/',
     bannerUploadPath: './images/banners',
     bannerServerPath: 'http://localhost/SaifB2B/banners/',

@@ -1,4 +1,5 @@
 var viewBookingsMgr = require('./bookings/viewBookingsMgr');
+var viewBulkRegistrationMgr =  require('./buy-registration/buy-registrationMgr');
 
 module.exports = function(app) {
     app.route('/allbookings')
@@ -9,6 +10,9 @@ module.exports = function(app) {
 
         app.route('/statusupdate/:id') 
         .put(viewBookingsMgr.updateStatus);
+
+        app.route('/bulkregistration')
+        .get(viewBulkRegistrationMgr.bulkRegistration);
 
       
 

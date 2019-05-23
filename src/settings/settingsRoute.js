@@ -8,6 +8,7 @@ var contactUsMgr = require('./contact-us/contactUsMgr');
 var privacyPolicyMgr = require('./privacy-policy/privacyPolicyMgr');
 var faqMgr = require('./faqs/faqMgr');
 var termsAndUseMgr = require('./terms-use/termsAndUseMgr');
+var subscribeMgr = require('./subscribe/subscribeMgr');
 
 module.exports = function(app) {
 
@@ -126,6 +127,11 @@ module.exports = function(app) {
 
     app.route('/editTerms/:id')
     .put(termsAndUseMgr.updateTerms);
+
+    // subscribe
+
+    app.route('/pushnotificationsubscribe')
+    .post(subscribeMgr.subscribe);
 
      
 }
